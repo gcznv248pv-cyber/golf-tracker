@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#1f8a55">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEO0lEQVR4nO3c4VHjMBRF4ccOfbBNsZ3QBNsJVVHK/vBM1pPkBtmR7PuezlcAWNKxLRsPL2+f7wHc8+vsA4Av4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJBezz6APb4/vs4+hD1+//1z9iFs85LoH+MnbeJWlkpyxFEmizX/RNzjKJnFmnMi1hvS8mWE9xh943Cetb5sR2oah+18DeI5Xsc4PGdqNMNR28VhOEeHcRu7Vxxus3M8qxlI+YY0vJ8A77Ja9UZG7zkapy9dFmu5xuh1W/mRyaztluv4XeJoOaVyzazSMgqTe5BLHD+qUcYiy1hyxJFlNtulGJFFHCZXUSsOc2IRx2MpTrId/MeVIA6chTggEQck4oBEHJCIoz+Hp9AuiKOzpYwafRBHT+smvj++sidCHGOl7oM4ulEd5O2DOPp4XEDSPoijg5a1z7gFIY5nbVryXH0Qx6H8/xK7RhxP2XQlyFVGEMczct0jdiCOnbaWke6yEcSxzwxlBHHsMEkZQRyj5S0jiGOr8pvQNeLYYJ4byoI4Ws1WRhBHownLCOIYoUYZQRwtar8jf6BUHCMeJaZ6PLlSJ44RX/bOudW4KBLH1Ze93X9mi2JlRI04blfx+HtBvTKiQByDPuuddhO6ljuOQZ/1zrwJXUscR+NnvSN+7FrVy0bkjaN9CYd+AFy4jEgax9YlHHSbqF1GJI1jx6p0vweVLyOSxhED+mATeitrHNG1D7YadyWOIzr1QRlK7jji6T4o44H0ccSw/WmXX5RahThibx9sQh8rEkeMP61nu2xEpThi5PpNWEYUiyPGrOKcZUS9OKL3Wk5bRpSMI/qt6MxlRNU4Yvp17aJsHPF0H+RVOY54YoEpI8rHEbuWmTIW9eOIjYtNGRdTxBEs+S6zxBFtfdDQ2kRxxE9rTxlXXs8+gKMtBVz9PZYs7poujgU1tJjrtoJNEsRR9ZMc/3FZxMFF/pbDnFjE8SP/k2yrFCPKEUckmc1GWcbiEkfLVTTLnD7WMgqHe0r4xNEoex+5jv/l7fP97GP4r33uTM6tdhmHlvUlWK5TMCmv24rPSXMWqxnwiiPMZudgbmO3iyP85ugYhqN2jCMsZ2ooz/GaxhGu8zWC7Uh94wjjWevIeYxe7zmUkg+uzlkscsSxKJOIfxaLTHFcJK0kSxMXKePAMaw3pDgXcUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUD6B5MDOFz+mg5ZAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEO0lEQVR4nO3c4VHjMBRF4ccOfbBNsZ3QBNsJVVHK/vBM1pPkBtmR7PuezlcAWNKxLRsPL2+f7wHc8+vsA4Av4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJBezz6APb4/vs4+hD1+//1z9iFs85LoH+MnbeJWlkpyxFEmizX/RNzjKJnFmnMi1hvS8mWE9xh943Cetb5sR2oah+18DeI5Xsc4PGdqNMNR28VhOEeHcRu7Vxxus3M8qxlI+YY0vJ8A77Ja9UZG7zkapy9dFmu5xuh1W/mRyaztluv4XeJoOaVyzazSMgqTe5BLHD+qUcYiy1hyxJFlNtulGJFFHCZXUSsOc2IRx2MpTrId/MeVIA6chTggEQck4oBEHJCIoz+Hp9AuiKOzpYwafRBHT+smvj++sidCHGOl7oM4ulEd5O2DOPp4XEDSPoijg5a1z7gFIY5nbVryXH0Qx6H8/xK7RhxP2XQlyFVGEMczct0jdiCOnbaWke6yEcSxzwxlBHHsMEkZQRyj5S0jiGOr8pvQNeLYYJ4byoI4Ws1WRhBHownLCOIYoUYZQRwtar8jf6BUHCMeJaZ6PLlSJ44RX/bOudW4KBLH1Ze93X9mi2JlRI04blfx+HtBvTKiQByDPuuddhO6ljuOQZ/1zrwJXUscR+NnvSN+7FrVy0bkjaN9CYd+AFy4jEgax9YlHHSbqF1GJI1jx6p0vweVLyOSxhED+mATeitrHNG1D7YadyWOIzr1QRlK7jji6T4o44H0ccSw/WmXX5RahThibx9sQh8rEkeMP61nu2xEpThi5PpNWEYUiyPGrOKcZUS9OKL3Wk5bRpSMI/qt6MxlRNU4Yvp17aJsHPF0H+RVOY54YoEpI8rHEbuWmTIW9eOIjYtNGRdTxBEs+S6zxBFtfdDQ2kRxxE9rTxlXXs8+gKMtBVz9PZYs7poujgU1tJjrtoJNEsRR9ZMc/3FZxMFF/pbDnFjE8SP/k2yrFCPKEUckmc1GWcbiEkfLVTTLnD7WMgqHe0r4xNEoex+5jv/l7fP97GP4r33uTM6tdhmHlvUlWK5TMCmv24rPSXMWqxnwiiPMZudgbmO3iyP85ugYhqN2jCMsZ2ooz/GaxhGu8zWC7Uh94wjjWevIeYxe7zmUkg+uzlkscsSxKJOIfxaLTHFcJK0kSxMXKePAMaw3pDgXcUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUAiDkjEAYk4IBEHJOKARByQiAMScUD6B5MDOFz+mg5ZAAAAAElFTkSuQmCC">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>Golf Fix Tracker</title>
+<meta name="apple-mobile-web-app-title" content="Golf Fix">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: one-column phone app, three tabs (Today / Stats / Phase) with a fixed bottom bar. */
+:root{
+  --bg:#f3f6f3; --card:#ffffff; --line:#dfe6e0; --ink:#13201a; --mute:#5f7268;
+  --acc:#1f8a55; --acc-ink:#ffffff; --acc-soft:#d7efe1; --part:#9fcdb2; --miss:#c94f4f; --miss-soft:#f6dcdc;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",-apple-system,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1512; --card:#18211c; --line:#26332b; --ink:#eef3ef; --mute:#8fa197;
+  --acc:#7fd3a0; --acc-ink:#0f1512; --acc-soft:#22382b; --part:#4a6b57; --miss:#e08585; --miss-soft:#3d2424; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1512; --card:#18211c; --line:#26332b; --ink:#eef3ef; --mute:#8fa197;
+  --acc:#7fd3a0; --acc-ink:#0f1512; --acc-soft:#22382b; --part:#4a6b57; --miss:#e08585; --miss-soft:#3d2424; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.4 var(--body);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:12px 40px}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+main{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+h1{font:700 28px/1.1 var(--display);letter-spacing:-.5px;margin:0}
+h2{font:600 20px/1.2 var(--display);margin:0;text-wrap:balance}
+.sub{color:var(--mute);font-size:13px}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:var(--acc);border-radius:4px;transition:width .3s}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+/* date nav */
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav button{width:36px;height:36px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:18px;color:var(--mute)}
+.dnav button:disabled{opacity:.35}
+.dnav .lbl{flex:1;min-width:0}
+.today-link{color:var(--acc);font-size:13px;font-weight:600}
+/* session tiles */
+.sess{display:flex;gap:12px;align-items:center;text-align:left;width:100%}
+.ring{width:48px;height:48px;flex:none;position:relative}
+.ring svg{width:48px;height:48px;transform:rotate(-90deg)}
+.ring span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:600}
+.t{font-weight:600;font-size:16px}
+.m{color:var(--mute);font-size:13px}
+.chev{color:var(--mute);font-size:22px;margin-left:auto}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--acc-soft);color:var(--ink)}
+.pill.opt{background:var(--line);color:var(--mute)}
+.linkbtn{color:var(--acc);font-weight:600;font-size:14px;padding:6px 0}
+/* week strip */
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:10px}
+.d{aspect-ratio:1;max-width:100%;border-radius:8px;background:var(--line);font-size:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--mute);position:relative;font-weight:600}
+.d.g{background:var(--acc);color:var(--acc-ink)}
+.d.p{background:var(--part);color:var(--ink)}
+.d.x{background:var(--miss-soft);color:var(--miss)}
+.d.sel{outline:2px solid var(--ink);outline-offset:1px}
+.d .dot{width:5px;height:5px;border-radius:50%;background:currentColor;position:absolute;bottom:4px;opacity:.9}
+.d.fut{opacity:.5}
+/* checklist */
+.back{color:var(--mute);font-size:14px;padding:4px 0}
+.ex{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start;text-align:left;width:100%}
+.ex:last-child{border-bottom:0}
+.box{width:28px;height:28px;border-radius:9px;border:2px solid var(--mute);flex:none;display:grid;place-items:center;font-size:16px;color:var(--acc-ink);margin-top:1px}
+.ex.done .box{background:var(--acc);border-color:var(--acc)}
+.ex.done .t{color:var(--mute);text-decoration:line-through}
+.ex .cue{font-size:12.5px;color:var(--mute);margin-top:4px}
+.time{font-size:11px;color:var(--acc);font-weight:600;margin-top:2px}
+.optlabel{margin-top:6px}
+textarea{width:100%;min-height:70px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;padding:10px;resize:vertical}
+.btn{display:block;width:100%;background:var(--acc);color:var(--acc-ink);text-align:center;font-weight:600;padding:13px;border-radius:14px}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.danger{background:var(--miss);color:#fff}
+.btn:disabled{opacity:.45}
+/* stats */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.big{font:700 30px/1.1 var(--display)}
+.weekrow{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:8px;margin-top:6px}
+.weekrow .wk{margin:0}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:11px;color:var(--mute)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+/* phase */
+.timeline{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.tl{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center}
+.tl .n{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--mute)}
+.tl.cur .n{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.tl.past .n{border-color:var(--acc);color:var(--acc)}
+details{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+summary{font-weight:600;cursor:pointer}
+.mist{margin:8px 0 0;padding-left:18px;font-size:13.5px}
+.mist li{margin-bottom:6px}
+.mist b{font-weight:600}
+.banner{font-size:13px;padding:10px 12px;border-radius:12px;background:var(--acc-soft)}
+.banner.warn{background:var(--miss-soft)}
+/* nav */
+nav{max-width:520px;margin:0 auto 14px;background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;justify-content:space-around;
+  padding:4px}
+nav button{flex:1;padding:8px 0;font-size:12px;font-weight:600;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button svg{width:20px;height:20px}
+nav button[aria-current="page"]{color:var(--acc)}
+.confirm{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+
+
+<nav id="nav">
+  <button data-tab="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Today</button>
+  <button data-tab="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Stats</button>
+  <button data-tab="phase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20l5-6 4 3 7-9"/><path d="M15 8h5v5"/></svg>Phase</button>
+</nav>
+<main id="app"><div class="card"><div class="t">Loading your plan…</div><div class="m">Fetching your ticks and phase.</div></div></main>
+
+
+<script>
+/* ---------------- PLAN DATA (Golf Athlete Fix Plan, A/B/C version) ---------------- */
+const PROGRAM_START = "2026-11-16";
+const PHASES = [
+  {name:"Reset", weeks:3, train:"30–35 min", fix:"20–25 min", goal:"Rewire movement with no load. Hold a neutral pelvis and a set shoulder blade while breathing. No pressing, no weights (ring rows and light face pulls are the only exceptions)."},
+  {name:"Activate", weeks:4, train:"40 min", fix:"25 min", goal:"Add light load without losing position. Shoulder work runs 4–5 times a week across training and fix days."},
+  {name:"Build stability", weeks:5, train:"45–50 min", fix:"25 min", goal:"Hold good pelvic and shoulder position under progressive load, start squatting to a box, and earn the first hinge."},
+  {name:"Strength", weeks:8, train:"55–60 min", fix:"20–25 min", goal:"Own the big lifts and start rotating under control, with 2 pulling sets for every pushing set. Add 2–5% load a week only when every rep is clean."},
+  {name:"Athletic power", weeks:8, train:"55–60 min", fix:"20 min", goal:"Turn strength into speed. Power work first while fresh; stop when speed drops. Keep 2 pulls per push."}
+];
+// "name | dose | cue"
+const DAILY = [
+  "90/90 wall breathing with pelvic tilt | 5 breaths × 2 | Feet on wall, tuck pelvis to flatten the low back, light glute squeeze, ribs down, full exhale through the mouth.",
+  "Stomach vacuum | 5 × 15–20 s | Breathe out fully, draw belly button to spine and hold with small chest breaths. Progress lying → all fours → kneeling → standing.",
+  "Deep neck flexor hold | 5 × 10 s | On your back, tuck chin and lift head 2 cm off the floor.",
+  "Thoracic extension over foam roller | 5 reps × 3 spots | Three spots between the shoulder blades.",
+  "Foam roll quads, TFL and adductors | 45 s per area per side | Never roll directly on the lower back.",
+  "Half-kneeling hip flexor stretch | 2 × 30 s per side | Tuck pelvis and squeeze the back-leg glute first. No arching.",
+  "Couch stretch | 45 s per side | Tuck pelvis and squeeze the glute before sitting tall. Start with the knee further from the wall if your back arches.",
+  "Pec minor release, lacrosse ball | 45 s per side | Just below the collarbone near the shoulder, slow arm sweeps. Ease off at any tingling or pulsing.",
+  "Serratus wall slide | 1 × 10 | Forearms on wall, push gently so shoulder blades wrap the ribs, slide up into a V without shrugging.",
+  "Ball ABCs on the wall | 1 alphabet per arm | Upper arm at shoulder height, forearm up, trace the alphabet with the shoulder. Lower the elbow if the arm tingles.",
+  "Scalene stretch | 2 × 20 s per side | Seated, hold the chair edge, tilt ear away and look slightly up."
+];
+const DAILY_OPT = ["Optional extras | 10–15 min | Upper trap release, foam roll lats and glutes, yoga flow: child's pose, cat-cow, low lunge, pigeon, thread the needle, legs up the wall."];
+const WARMUP = "Warm-up: cat-cow + glute bridge | ×10 | After the daily block. Pelvis neutral, ribs down, shoulder blades set before every set. Rest 60–90 s.";
+const S = [
+ { // Phase 0
+  A:["Dead bug, arms only then full | 3 × 6 per side","Glute bridge, 3 s hold at top | 3 × 12","Side-lying clamshell | 2 × 15 per side","Bird dog, 3 s hold | 3 × 6 per side","Side plank from knees | 3 × 15 s per side","Scapular setting, standing, 5 s hold | 2 × 10","Serratus wall slide | 2 × 12","Ring inverted row, current level | 3 × 8"],
+  B:["Dead bug with heel taps | 3 × 8 per side","Glute bridge with band at knees | 3 × 12","Side-lying hip abduction, leg slightly back | 2 × 12 per side","Quadruped hover, knees 2 cm up, push floor away | 3 × 15 s","Sit-to-stand to bench, arms forward | 3 × 8","Prone Y on floor, thumbs up | 2 × 8","Forearm wall slide | 2 × 10","Ring inverted row, current level | 3 × 8","Face pull on cable, light | 2 × 15"],
+  fixTue:["McGill big 3: curl-up, side plank, bird dog | 3 × 10 s holds each","Reverse crunch, small range | 2 × 8","Copenhagen side plank, short lever, knee on bench | 2 × 10 s per side","Standing hip hike | 2 × 10 per side","Heel slides in posterior tilt | 2 × 8 per side","Wall sit, low back flat | 3 × 20 s","Hip hinge with dowel along spine | 2 × 10","90/90 hip switches, lift back knee | 8 per side"],
+  fixThu:["Scapular setting, 5 s hold | 3 × 10","Forearm wall slide | 3 × 10","Prone Y | 3 × 8","Nerve glides (only if physio cleared) | 2 × 10 per arm, gentle","Quadruped T-spine rotation | 8 per side"],
+  circuit:["Scapular setting | 1 × 10","Forearm wall slide | 1 × 10","Prone Y | 1 × 10","Nerve glides (only if cleared) | 1 × 10"]
+ },
+ { // Phase 1
+  A:["Dead bug, full | 3 × 8 per side","Glute bridge with band, 3 s hold | 3 × 15","Bulgarian split squat, bodyweight | 3 × 8 per side","Ring row, body at 45° | 3 × 10","Incline push-up plus on bench | 3 × 8","Serratus wall slide (band at wrists once easy) | 3 × 12","Side plank from knees or full | 3 × 20 s per side"],
+  B:["Goblet sit-to-stand to bench, 8–10 kg | 3 × 8","Single-leg glute bridge | 3 × 8 per side","Hip hinge with dowel → KB deadlift from blocks once hinge hold marker passed | 3 × 8","Half-kneeling one-arm cable row | 3 × 10 per side","Prone Y/T/W on bench | 2 × 6 each","Face pull on cable, light | 3 × 15","Quadruped hover | 3 × 20 s"],
+  fixTue:["McGill big 3 | 3 × 10 s holds each","Reverse crunch, full range | 3 × 8","Copenhagen side plank, short lever | 3 × 12 s per side","Standing banded hip abduction | 2 × 15 per side","Heel slides in posterior tilt | 2 × 10 per side","Single-leg balance with reach | 2 × 6 per side","Standing hip hinge hold (arms crossed → 10–16 kg KB) | build to 3 × 30–60 s","90/90 hip switches, lift back knee | 8 per side"],
+  fixThu:["Serratus wall slide | 3 × 12","Wall angels | 3 × 8","Band pull-apart | 3 × 15","Prone Y/T/W | 2 × 6 each","Nerve glides (if cleared) | 2 × 10","Open book with reach | 8 per side"]
+ },
+ { // Phase 2
+  A:["Goblet box squat, 12–16 kg, high box | 3 × 8","Barbell or DB hip thrust, 3 s hold | 3 × 10","Bulgarian split squat, light DBs | 3 × 8 per side","Ring row, feet closer to anchor | 3 × 10","Push-up plus from low bench or floor | 3 × 8","Pallof press on cable, tall kneeling | 3 × 10 per side","Side plank, full | 3 × 30 s per side"],
+  B:["KB deadlift from blocks, 12–16 kg (marker passed only) | 3 × 8","Single-leg glute bridge | 3 × 10 per side","Reverse lunge to step, light DBs | 3 × 8 per side","Seated or half-kneeling cable row | 3 × 10","Face pull on cable | 3 × 12","Dead bug with band pullover | 3 × 8 per side","Standing hip hinge hold, 12–16 kg KB | 3 × 45–60 s"],
+  fixTue:["McGill big 3 | 3 × 10 s holds each","Copenhagen side plank, short lever | 3 × 15 s","Reverse crunch | 3 × 10","Body-saw on rings or towel | 2 × 6","Single-leg balance with reach | 2 × 8 per side","Lateral band walk | 2 × 12 per side","Half-kneeling lead-hip IR lift-offs | 2 × 8 per side","90/90 hip switches, lift back knee | 8 per side"],
+  fixThu:["Push-up plus | 2 × 10","Face pull | 3 × 12","Half-kneeling cable external rotation | 2 × 12 per side","Wall angels | 2 × 10","Turkish get-up to elbow, 8–10 kg | 2 × 3 per side","Open book | 8 per side"]
+ },
+ { // Phase 3
+  A:["Goblet squat full depth, 16–20 kg | 4 × 8","Barbell hip thrust | 3 × 8","Ring row or inverted barbell row | 4 × 8","Face pull | 3 × 12","Push-up plus, feet on floor | 3 × 10","Half-kneeling cable chop, high to low | 3 × 8 per side","RKC plank | 3 × 30 s"],
+  B:["KB deadlift → barbell RDL, bar only to start | 4 × 8","Single-leg KB RDL, hand on rack | 3 × 8 per side","Chin-up, band-assisted (pulldown if arm symptoms) | 4 × 5","Band pull-apart | 3 × 15","Ring push-up plus | 3 × 8","Half-kneeling cable lift, low to high | 3 × 8 per side","Farmer carry 2 × 16–20 kg, stop if arm tingles | 3 × 30 m"],
+  C:["Bulgarian split squat with DBs | 3 × 8 per side","Lateral lunge, goblet KB | 3 × 6 per side","One-arm cable row, split stance | 3 × 10 per side","Prone Y/T/W with 1–2 kg DBs | 2 × 8 each","Half-kneeling landmine press | 3 × 8 per side","Landmine rotation, slow | 3 × 6 per side","Hanging knee raise in posterior tilt on rings | 3 × 8"],
+  fixTue:["McGill big 3 | 3 × 10 s holds each","Copenhagen side plank, long lever | 3 × 15 s per side","Lateral band walk | 2 × 12 per side","Hip airplane, hand on rack | 2 × 5 per side","Ab wheel or body-saw rollout | 3 × 6","90/90 lead-hip rotation lift-offs | 2 × 8 per side","90/90 hip switches, lift back knee | 8 per side"],
+  fixThu:["Full Turkish get-up, 12–16 kg | 3 × 2 per side","Cable external rotation | 2 × 12 per side","Bottoms-up KB carry | 2 × 20 m per side","Wall angels | 2 × 10","Half-kneeling cable T-spine rotation | 2 × 8 per side"]
+ },
+ { // Phase 4
+  A:["Box jump, step down | 4 × 3","Front squat (or back squat if no arm symptoms) | 4 × 5","Cable rotational punch, fast | 3 × 6 per side","Chin-up or ring row | 4 × 6","Face pull | 3 × 12","Single-leg KB RDL, unsupported | 3 × 6 per side","Ab wheel rollout | 3 × 8"],
+  B:["KB swing, 16–20 kg | 5 × 8","Barbell deadlift or RDL | 4 × 5","Landmine rotational press, explosive | 3 × 5 per side","One-arm DB row | 4 × 8 per side","Weighted push-up plus or ring push-up | 4 × 6","Barbell hip thrust | 3 × 6","Suitcase carry, 20 kg | 3 × 40 m per side"],
+  C:["Lateral skater bound with stick | 4 × 4 per side","Barbell or DB reverse lunge | 3 × 6 per side","Cable golf-pattern pull, fast | 3 × 6 per side","Inverted barbell row | 3 × 8","Prone Y/T/W with DBs | 2 × 8 each","Copenhagen side plank, long lever | 3 × 20 s per side","Half-kneeling Pallof press with rotation | 3 × 8 per side"],
+  fixTue:["McGill big 3 | 3 × 10 s holds each","Hip airplane, unsupported | 3 × 5 per side","Single-leg lateral hops | 3 × 5 per side","Hanging leg raise in posterior tilt | 3 × 8","Copenhagen side plank with leg lift | 3 × 6 per side","90/90 hip switches, lift back knee | 8 per side"],
+  fixThu:["Turkish get-up, 16–20 kg | 3 × 2 per side","Cable external rotation at 90° | 2 × 12","Ring support hold with turn-out | 3 × 15 s","Split-stance cable T-spine rotation | 2 × 10 per side"]
+ }
+];
+const MARKERS = [
+  ["Dead bug 3 × 8 per side, back flat","Side plank from knees 20 s per side","Glute bridge 3 × 12 felt in glutes, not hamstrings or back","Scapular setting held 10 s without shrugging","Serratus wall slide with no visible winging (film it)","Chin tuck held 10 × 10 s","Hold a pelvic tilt standing for 10 breaths"],
+  ["Dead bug 3 × 10 per side","Front plank from toes 30 s in posterior tilt","Single-leg bridge 3 × 10 per side, level hips","Clamshell 20 per side","Incline push-up plus 3 × 10, no winging","Wall angel × 10, back and forearms near the wall","Prone Y without upper traps taking over","Half-kneeling hip flexor stretch with no arching","Standing hip hinge hold 60 s pain-free with 12 kg KB"],
+  ["Front plank 45 s","Full side plank 40 s per side","Pallof press 3 × 10 with solid load","Hip thrust 3 × 10 at ~50% bodyweight","Straight-knee standing pelvic tuck held 5 breaths","Floor push-up plus 3 × 10, no winging","Face pull 3 × 12, no shrug","Lying on back, shoulders within ~2 cm of floor","Goblet box squat 3 × 10 at 16 kg, no arch","KB deadlift from blocks 3 × 8 at 20 kg, neutral spine","Standing hip hinge hold 60 s with 16 kg KB"],
+  ["RKC plank 60 s","Ab wheel 3 × 8 without sagging","Hanging knee raise × 10, pelvis curling up","Hip thrust 3 × 8 at bodyweight","Single-leg KB RDL 3 × 8 per side, unsupported","Ring push-up plus 3 × 8, no winging","Chin-up or pulldown 3 × 5 symptom-free","Landmine press 3 × 8 pain-free","Farmer carry 30 m, no arm symptoms","Goblet squat full depth 3 × 10 at 20 kg","Barbell RDL 3 × 8 at 50% bodyweight","No back pain the morning after"],
+  ["Suitcase carry 40 m per side at 20 kg, no lean","Hip airplane unsupported 5 per side, controlled","Arms overhead on wall, no rib flare or arm symptoms","Turkish get-up 20 kg clean","Front or back squat 5 reps at bodyweight","Deadlift 5 reps at 1.25 × bodyweight","Pain-free 18 holes and range sessions"]
+];
+const ALWAYS_MARKERS = ["Back pain 2/10 or less","No arm tingling or numbness for 2 weeks"];
+const MISTAKES = [
+  ["Stretching hip flexors while arched","Tuck the pelvis and squeeze the back-leg glute before leaning forward."],
+  ["Sit-ups, crunches or straight-leg raises","Hip-flexor dominant; use dead bugs, reverse crunches and planks in posterior tilt."],
+  ["Feeling bridges in hamstrings or low back","Heels closer, push through heels, tuck pelvis first, hold the top 3 s."],
+  ["Shrugging during scapular work","Shoulders down and away from ears; drop the range until you can."],
+  ["Push-ups without the plus","Finish every push-up by pushing the floor away until the upper back rounds slightly."],
+  ["Pressing too early","No pressing in Phase 0; push-up plus before any bench work; 2 pulls per push."],
+  ["Chin poking forward","Keep a light chin tuck, as if holding an egg under your chin."],
+  ["Holding your breath under load","Save drawing-in for vacuums. Under load: exhale, ribs down, brace all round, keep breathing."],
+  ["Pushing through nerve symptoms","Ease off at any tingling, numbness or pulsing. Nerve glides are slides, never stretches."],
+  ["Rushing squats, deadlifts or heavy carries","Pass the markers first; the calendar is a guide only."],
+  ["Foam rolling the lower back","Roll hips, thighs, lats and upper back; leave the lumbar spine alone."],
+  ["Carrying a heavy golf bag / big range sessions","Use a trolley and keep range sessions to ~50 balls in Phases 0–2."]
+];
+const SESSION_NAMES = {daily:"Daily non-negotiables",A:"Training A",B:"Training B",C:"Training C",fixTue:"Fix: pelvis & core",fixThu:"Fix: shoulders & scapula",circuit:"Shoulder circuit (10 min)",golf:"Golf or 30–45 min walk",rest:"Rest day yoga flow"};
+const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+/* ---------------- dates ---------------- */
+const pad = n => String(n).padStart(2,"0");
+const key = d => d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const parse = k => { const [y,m,d]=k.split("-").map(Number); return new Date(y,m-1,d); };
+const addDays = (k,n) => { const d=parse(k); d.setDate(d.getDate()+n); return key(d); };
+const todayKey = () => key(new Date());
+const mondayOf = k => { const d=parse(k); const w=(d.getDay()+6)%7; d.setDate(d.getDate()-w); return key(d); };
+const daysBetween = (a,b) => Math.round((parse(b)-parse(a))/864e5);
+const fmtLong = k => { const d=parse(k); return DOW[d.getDay()]+" "+d.getDate()+" "+MON[d.getMonth()]; };
+const nowHM = () => { const d=new Date(); return pad(d.getHours())+":"+pad(d.getMinutes()); };
+
+/* ---------------- state + storage ---------------- */
+let state = { settings:{ history:[{p:0,from:PROGRAM_START}], markers:{} }, days:{} };
+let ui = { tab:"today", date:todayKey(), open:null, confirm:null, swap:false };
+let store = null; // {saveDay, saveSettings}
+let storageNote = "";
+let pending = [];
+let lastError = "";
+
+function phaseAt(k){ let p=0; for(const h of state.settings.history){ if(h.from<=k) p=h.p; } return p; }
+function curPhase(){ return phaseAt(todayKey()); }
+function phaseStart(){ const h=state.settings.history; return h[h.length-1].from; }
+
+function split(s){ const [n,d,c]=s.split(" | "); return {n,d,c}; }
+function itemsFor(sk,p){
+  if(sk==="daily") return DAILY.map(split);
+  if(sk==="golf") return [{n:"Golf round or 30–45 min walk",d:"Use a trolley, not a carry bag"}];
+  if(sk==="rest") return DAILY_OPT.map(split);
+  const list = S[p][sk]||[];
+  const ex = list.map(split);
+  return (sk==="A"||sk==="B"||sk==="C") ? [split(WARMUP),...ex] : ex;
+}
+function sessionTime(sk,p){
+  if(sk==="daily") return "~19 min";
+  if(sk==="A"||sk==="B"||sk==="C") return PHASES[p].train;
+  if(sk==="fixTue"||sk==="fixThu") return PHASES[p].fix;
+  if(sk==="circuit") return "10 min";
+  if(sk==="rest") return "10–15 min, optional";
+  return "";
+}
+// planned main session for a weekday
+function plannedMain(k){
+  const p=phaseAt(k), w=parse(k).getDay();
+  return {1:"A",2:"fixTue",3:"B",4:"fixThu",5:(p<=2?"A":"C")}[w]||null;
+}
+function mainFor(k){ const d=state.days[k]; return (d&&d.slot)||plannedMain(k); }
+function extrasFor(k){
+  const p=phaseAt(k), w=parse(k).getDay(), out=[];
+  if(w===6) out.push("golf");
+  if(w===0) out.push("rest");
+  if(p===0 && (w===6||w===0)) out.push("circuit");
+  return out;
+}
+function sessionsFor(phase){ const o=["A","B"]; if(phase>=3) o.push("C"); o.push("fixTue","fixThu"); if(phase===0) o.push("circuit"); return o; }
+
+function sessData(k,sk){ const d=state.days[k]; return (d&&d.s&&d.s[sk])||{t:{},n:""}; }
+function progress(k,sk){
+  const items=itemsFor(sk,phaseAt(k)); const t=sessData(k,sk).t||{};
+  const done=items.filter((_,i)=>t[i]).length; return {done,total:items.length};
+}
+function status(k,sk){ if(!sk) return "none"; const {done,total}=progress(k,sk); return done===0?"none":(done>=total?"done":"part"); }
+
+function ensureDay(k){ if(!state.days[k]) state.days[k]={s:{}}; if(!state.days[k].s) state.days[k].s={}; return state.days[k]; }
+function toggle(k,sk,i){
+  const day=ensureDay(k); const sd=day.s[sk]||(day.s[sk]={t:{},n:""}); if(!sd.t) sd.t={};
+  if(sd.t[i]) delete sd.t[i]; else sd.t[i]= (k===todayKey()? nowHM() : "logged later");
+  persistDay(k);
+  if(!updateTickDom(k,sk,i)) render();
+}
+function updateTickDom(k,sk,i){
+  const btn=app.querySelector(`[data-tick="${i}"]`), head=document.getElementById("sesshead"), bar=document.getElementById("sessbar");
+  if(!btn||!head||!bar) return false;
+  const v=sessData(k,sk).t[i];
+  btn.classList.toggle("done",!!v); btn.setAttribute("aria-pressed",String(!!v));
+  btn.querySelector(".box").textContent = v?"✓":"";
+  const tm=btn.querySelector(".time"); tm.textContent = v?"✓ "+v:""; tm.hidden=!v;
+  const {done,total}=progress(k,sk);
+  head.textContent = done+" of "+total+" done";
+  bar.style.width=(total?done/total*100:0)+"%";
+  const ban=document.getElementById("sessdone"); if(ban) ban.hidden = !(done===total&&total);
+  return true;
+}
+function setNote(k,sk,v){ const day=ensureDay(k); const sd=day.s[sk]||(day.s[sk]={t:{},n:""}); sd.n=v; persistDay(k,800); }
+function setSlot(k,sk){ const day=ensureDay(k); day.slot = (sk===plannedMain(k)?null:sk); ui.swap=false; ui.open=sk; persistDay(k); render(); }
+
+/* write queue: one write at a time per doc, debounced */
+const timers={}, inflight={}, again={};
+function mirror(){ try{ localStorage.setItem("golf-fix-tracker-v1",JSON.stringify(state)); }catch(e){} }
+function persistDay(k,delay=250){ mirror(); if(store&&store.local) return; queue("d"+k, ()=>store&&store.saveDay(k,state.days[k]), delay); }
+function persistSettings(){ mirror(); if(store&&store.local) return; queue("settings", ()=>store&&store.saveSettings(state.settings), 100); }
+function queue(id,fn,delay){
+  clearTimeout(timers[id]);
+  timers[id]=setTimeout(async function run(){
+    if(inflight[id]){ again[id]=true; return; }
+    inflight[id]=true;
+    try{ await fn(); }catch(e){ showSaveError(e); }
+    inflight[id]=false;
+    if(again[id]){ again[id]=false; run(); }
+  },delay);
+}
+function showSaveError(e){ lastError = "Save failed: "+((e&&(e.code+" "+(e.message||"")))||String(e)); storageNote = "Couldn't save the last change ("+((e&&e.code)||"error")+"). Check your signal and tick it again."; render(); }
+
+function localStore(){
+  const K="golf-fix-tracker-v1";
+  return {
+    local:true,
+    load(){ try{ const v=JSON.parse(localStorage.getItem(K)||"null"); if(v) state=v; }catch(e){} },
+    saveDay(){ try{ localStorage.setItem(K,JSON.stringify(state)); }catch(e){} },
+    saveSettings(){ try{ localStorage.setItem(K,JSON.stringify(state)); }catch(e){} }
+  };
+}
+
+function initStorage(){
+  const ls=localStore(); ls.load(); store=ls;
+  try{ localStorage.setItem("gft-probe","1"); localStorage.removeItem("gft-probe"); }
+  catch(e){ storageNote="This browser isn't letting the page save. Ticks will be lost when you close it."; }
+}
+function exportData(){ return JSON.stringify(state); }
+function importData(txt){ const v=JSON.parse(txt); if(!v||!v.settings||!v.days) throw new Error("not a tracker backup"); state=v; mirror(); }
+
+/* ---------------- render helpers ---------------- */
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function ring(done,total){
+  const r=20, c=2*Math.PI*r, f=total?done/total:0;
+  return `<div class="ring"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="${r}" fill="none" stroke="var(--line)" stroke-width="4"/><circle cx="24" cy="24" r="${r}" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-f)}"/></svg><span class="num">${done}/${total}</span></div>`;
+}
+function phaseProgress(){
+  const p=curPhase(), start=phaseStart(), t=todayKey();
+  const week = Math.floor(daysBetween(mondayOf(start),mondayOf(t))/7)+1;
+  const total = PHASES[p].weeks;
+  const dayNum = daysBetween(start,t)+1;
+  const pct = Math.min(100,Math.round(dayNum/(total*7)*100));
+  return {p,week,total,pct,dayNum,over:week>total};
+}
+function dayCellClass(k){
+  const t=todayKey(); if(k>t) return "fut";
+  const m=mainFor(k), st=status(k,m), w=parse(k).getDay();
+  if(m && (w>=1&&w<=5 || state.days[k]?.slot)){ if(st==="done") return "g"; if(st==="part") return "p"; if(k<t) return "x"; return ""; }
+  // weekend: show green if any extra done
+  const any = extrasFor(k).some(sk=>status(k,sk)!=="none");
+  return any?"g":"";
+}
+function dailyDot(k){ return status(k,"daily")==="done"; }
+
+/* ---------------- views ---------------- */
+function viewToday(){
+  const k=ui.date, t=todayKey(), p=phaseAt(k);
+  if(ui.open) return viewSession(k,ui.open);
+  const pp=phaseProgress();
+  const main=mainFor(k), planned=plannedMain(k), extras=extrasFor(k);
+  const tile = (sk,label) => { const {done,total}=progress(k,sk); return `<button class="card sess" data-open="${sk}">${ring(done,total)}<div style="min-width:0"><div class="t">${esc(SESSION_NAMES[sk])}</div><div class="m">${esc(sessionTime(sk,p))}${label?` · <span class="pill${label==="optional"?" opt":""}">${label}</span>`:""}</div></div><span class="chev">›</span></button>`; };
+  const ws = mondayOf(k);
+  let strip=""; for(let i=0;i<7;i++){ const dk=addDays(ws,i); strip+=`<button class="d ${dayCellClass(dk)} ${dk===k?"sel":""}" data-date="${dk}" aria-label="${fmtLong(dk)}">${DOW[parse(dk).getDay()][0]}${dailyDot(dk)?'<span class="dot"></span>':""}</button>`; }
+  const isPast=k<t, isFuture=k>t;
+  let swap="";
+  if(ui.swap){
+    swap=`<div class="card"><div class="tag">Do a different session ${isPast?"on this day":"today"}</div><div class="confirm">${sessionsFor(p).map(sk=>`<button class="btn ${sk===main?"":"ghost"}" data-slot="${sk}">${esc(SESSION_NAMES[sk])}</button>`).join("")}${planned&&main!==planned?`<button class="linkbtn" data-slot="${planned}">Back to planned (${esc(SESSION_NAMES[planned])})</button>`:""}<button class="linkbtn" data-act="swapcancel">Cancel</button></div></div>`;
+  }
+  return `
+  ${storageNote?`<div class="banner">${esc(storageNote)}</div>`:""}
+  <div class="dnav"><button data-act="prev" aria-label="Previous day" ${k<=PROGRAM_START?"disabled":""}>‹</button>
+    <div class="lbl"><div class="sub">${k===t?"Today":isPast?"Logging a past day":"Upcoming"}</div><h1>${fmtLong(k)}</h1></div>
+    <button data-act="next" aria-label="Next day">›</button></div>
+  ${k!==t?`<button class="today-link" data-act="gotoday">Back to today</button>`:""}
+  <button class="card" data-tab="phase" style="text-align:left;width:100%"><div class="row"><span class="tag">Phase ${pp.p} · ${PHASES[pp.p].name}</span><span class="m num">Week ${pp.week} of ${pp.total}</span></div>
+    <div class="bar"><i style="width:${pp.pct}%"></i></div>
+    <div class="row" style="margin-top:6px"><span class="m num">${pp.over?"Planned weeks done. Check your markers":"Day "+pp.dayNum+" of "+pp.total*7}</span><span class="m num">${pp.pct}%</span></div></button>
+  ${isFuture?`<div class="banner">This day hasn't happened yet. You can look, but ticks open on the day.</div>`:""}
+  ${tile("daily","every day")}
+  ${main?tile(main, main!==planned?"swapped":(parse(k).getDay()>=1&&parse(k).getDay()<=5?"":"make-up")):""}
+  ${extras.map(sk=>tile(sk,"optional")).join("")}
+  ${!isFuture&&!ui.swap?`<button class="linkbtn" data-act="swap">${main?"Do a different session":"Add a make-up session"}</button>`:""}
+  ${swap}
+  <div class="card"><div class="row"><span class="tag">This week</span><span class="m">tap a day to log it</span></div><div class="wk">${strip}</div>
+    <div class="legend"><span><i style="background:var(--acc)"></i>session done</span><span><i style="background:var(--part)"></i>partly</span><span><i style="background:var(--miss-soft)"></i>missed</span><span>• daily block</span></div></div>`;
+}
+
+function viewSession(k,sk){
+  const p=phaseAt(k), items=itemsFor(sk,p), sd=sessData(k,sk), t=sd.t||{};
+  const {done,total}=progress(k,sk); const locked = k>todayKey();
+  const list = items.map((it,i)=>`<button class="ex ${t[i]?"done":""}" data-tick="${i}" ${locked?"disabled":""} aria-pressed="${!!t[i]}">
+    <span class="box">${t[i]?"✓":""}</span>
+    <span style="min-width:0"><span class="t" style="display:block">${esc(it.n)}</span><span class="m" style="display:block">${esc(it.d||"")}</span>${it.c&&ui.cues?`<span class="cue" style="display:block">${esc(it.c)}</span>`:""}<span class="time" style="display:block" ${t[i]?"":"hidden"}>${t[i]?"✓ "+esc(t[i]):""}</span></span></button>`).join("");
+  const extra = sk==="daily" ? `<div class="card"><div class="tag optlabel">Optional (not counted)</div>${DAILY_OPT.map(split).map(it=>`<div class="ex"><span style="min-width:0"><span class="t" style="display:block">${esc(it.n)}</span><span class="m" style="display:block">${esc(it.d)}</span><span class="cue" style="display:block">${esc(it.c)}</span></span></div>`).join("")}</div>` : "";
+  return `
+  <button class="back" data-act="close">‹ ${k===todayKey()?"Today":fmtLong(k)}</button>
+  <div><h2>${esc(SESSION_NAMES[sk])}</h2><div class="sub num"><span id="sesshead">${done} of ${total} done</span> · tick in any order${k!==todayKey()?" · "+fmtLong(k):""} · Phase ${p}</div><div class="bar"><i id="sessbar" style="width:${total?done/total*100:0}%"></i></div></div>
+  ${items.some(it=>it.c)?`<button class="linkbtn" data-act="cues" style="text-align:left">${ui.cues?"Hide how-to cues":"Show how-to cues"}</button>`:""}
+  <div class="banner" id="sessdone" ${done===total&&total?"":"hidden"}>Session complete. Nice work.</div>
+  <div class="card" style="padding-block:4px">${list}</div>
+  ${extra}
+  <div class="card"><label class="tag" for="note">Notes: pain, tingling, how it felt</label><textarea id="note" data-note="1" placeholder="e.g. back 1/10, left arm fine, bridges felt in glutes">${esc(sd.n||"")}</textarea></div>
+  <div class="m">Pain rule: 0–2/10 is fine. 3–5/10, drop the load or range. Stop for pain above 5/10 or any numbness, tingling, colour change or heaviness in an arm.</div>`;
+}
+
+function computeStats(){
+  const t=todayKey(); let planned=0, completed=0, partial=0, missed=[], dailyDone=0, dailyDays=0;
+  for(let k=PROGRAM_START;k<=t;k=addDays(k,1)){
+    const w=parse(k).getDay(), weekday=w>=1&&w<=5, m=mainFor(k), st=status(k,m);
+    const counts = weekday && (k<t || st!=="none");
+    if(counts) planned++;
+    if(m && (weekday || state.days[k]?.slot)){ if(st==="done") completed++; else if(st==="part"&&counts) partial++; else if(st==="none"&&weekday&&k<t) missed.push(k); }
+    if(k<t || status(k,"daily")==="done"){ dailyDays++; if(status(k,"daily")==="done") dailyDone++; }
+  }
+  let streak=0, k=status(t,"daily")==="done"?t:addDays(t,-1);
+  while(k>=PROGRAM_START && status(k,"daily")==="done"){ streak++; k=addDays(k,-1); }
+  let best=0,run=0; for(let d=PROGRAM_START; d<=t; d=addDays(d,1)){ if(status(d,"daily")==="done"){run++;best=Math.max(best,run);} else run=0; }
+  return {planned,completed,partial,missed,dailyDone,dailyDays,streak,best};
+}
+function viewStats(){
+  const s=computeStats(), t=todayKey();
+  const pct = (a,b)=> b? Math.min(100,Math.round(a/b*100)) : 0;
+  const weeks=[]; for(let w=mondayOf(t); w>=mondayOf(PROGRAM_START); w=addDays(w,-7)) weeks.push(w);
+  const rows = weeks.map(w=>{ const n=Math.floor(daysBetween(mondayOf(PROGRAM_START),w)/7)+1; let cells=""; for(let i=0;i<7;i++){ const dk=addDays(w,i); cells+=`<button class="d ${dk<PROGRAM_START?"fut":dayCellClass(dk)}" data-date="${dk}" ${dk<PROGRAM_START?"disabled":""} aria-label="${fmtLong(dk)}">${parse(dk).getDate()}${dk>=PROGRAM_START&&dailyDot(dk)?'<span class="dot"></span>':""}</button>`; } return `<div class="weekrow"><span class="m num">Wk ${n}<br><span style="font-size:11px">P${phaseAt(w<PROGRAM_START?PROGRAM_START:w)}</span></span><div class="wk">${cells}</div></div>`; }).join("");
+  const pp=phaseProgress();
+  return `
+  <div><h1>Stats</h1><div class="sub">Since ${fmtLong(PROGRAM_START)} · week ${Math.floor(daysBetween(mondayOf(PROGRAM_START),mondayOf(t))/7)+1} of the program</div></div>
+  <div class="grid">
+    <div class="card"><div class="tag">Sessions</div><div class="big num">${s.completed}/${s.planned}</div><div class="m">${pct(s.completed,s.planned)}% completed</div></div>
+    <div class="card"><div class="tag">Missed</div><div class="big num">${s.missed.length}</div><div class="m">${s.missed.length?"Last: "+fmtLong(s.missed[s.missed.length-1]):"None so far"}</div></div>
+    <div class="card"><div class="tag">Daily block</div><div class="big num">${s.dailyDone}/${s.dailyDays}</div><div class="m">${pct(s.dailyDone,s.dailyDays)}% of days</div></div>
+    <div class="card"><div class="tag">Streak</div><div class="big num">${s.streak}</div><div class="m">days in a row · best ${s.best}</div></div>
+  </div>
+  ${s.partial?`<div class="m">${s.partial} session${s.partial>1?"s":""} partly done. Sessions are Mon–Fri; a weekend make-up counts as completed.</div>`:`<div class="m">Sessions are planned Mon–Fri. A weekend make-up counts as completed.</div>`}
+  <div class="card"><div class="row"><span class="tag">Phase ${pp.p} progress</span><span class="m num">Week ${pp.week} of ${pp.total}</span></div><div class="bar"><i style="width:${pp.pct}%"></i></div></div>
+  <div class="card"><div class="row"><span class="tag">Week by week</span><span class="m">tap a day to log it</span></div>${rows}
+    <div class="legend"><span><i style="background:var(--acc)"></i>done</span><span><i style="background:var(--part)"></i>partly</span><span><i style="background:var(--miss-soft)"></i>missed</span><span>• daily block done</span></div></div>
+  ${s.missed.length?`<div class="card"><div class="tag">Missed sessions</div><div class="m" style="margin-top:6px">${s.missed.slice(-8).reverse().map(k=>`<button class="linkbtn" style="display:block" data-date="${k}">${fmtLong(k)} · ${esc(SESSION_NAMES[mainFor(k)])} ›</button>`).join("")}</div></div>`:""}`;
+}
+
+function viewPhase(){
+  const pp=phaseProgress(), p=pp.p, mk=state.settings.markers[p]||{};
+  const tests=[...ALWAYS_MARKERS, ...(MARKERS[p]||[])];
+  const passed=tests.filter((_,i)=>mk[i]).length;
+  const last = p===4;
+  const tl = PHASES.map((ph,i)=>{ const h=state.settings.history.filter(x=>x.p===i).pop(); return `<div class="tl ${i===p?"cur":i<p?"past":""}"><span class="n">${i}</span><div><div class="t" style="font-size:15px">${ph.name}</div><div class="m">${ph.weeks} weeks · training ${ph.train} · fix ${ph.fix}</div></div><span class="m">${h?"from "+fmtLong(h.from).slice(4):""}</span></div>`; }).join("");
+  let confirm="";
+  if(ui.confirm==="up") confirm=`<div class="confirm"><div class="banner">Move to Phase ${p+1}: ${PHASES[p+1].name}? Your sessions change from today. Earlier days keep their old sessions.</div><button class="btn" data-act="doup">Yes, start Phase ${p+1}</button><button class="btn ghost" data-act="nocf">Not yet</button></div>`;
+  if(ui.confirm==="down") confirm=`<div class="confirm"><div class="banner warn">Go back to Phase ${p-1}: ${PHASES[p-1].name}? Use this after a week or more off, or if symptoms return.</div><button class="btn danger" data-act="dodown">Yes, go back</button><button class="btn ghost" data-act="nocf">Cancel</button></div>`;
+  return `
+  <div><h1>Phase ${p}</h1><div class="sub">${PHASES[p].name} · week ${pp.week} of ${pp.total}</div></div>
+  <div class="card"><div class="row"><span class="tag">Progress through phase</span><span class="m num">${pp.pct}%</span></div><div class="bar"><i style="width:${pp.pct}%"></i></div>
+    <p class="m" style="margin:10px 0 0">${esc(PHASES[p].goal)}</p></div>
+  ${last?`<div class="card"><div class="tag">Ongoing targets</div>`:`<div class="card"><div class="row"><span class="tag">Ready for Phase ${p+1}?</span><span class="m num">${passed} of ${tests.length} passed</span></div>`}
+    <div class="m" style="margin-top:6px">Test on the last session of the block. Tick each one when you pass it. Fail one: repeat two weeks and retest.</div>
+    <div style="margin-top:4px">${tests.map((tx,i)=>`<button class="ex ${mk[i]?"done":""}" data-marker="${i}" aria-pressed="${!!mk[i]}"><span class="box">${mk[i]?"✓":""}</span><span class="t" style="font-size:15px;font-weight:500">${esc(tx)}</span></button>`).join("")}</div>
+    ${!last&&!ui.confirm?`<button class="btn" data-act="up" style="margin-top:10px">Advance to Phase ${p+1}</button>${passed<tests.length?`<div class="m" style="margin-top:6px;text-align:center">You can advance any time; the markers are your guide.</div>`:""}`:""}
+    ${confirm}
+  </div>
+  <div class="card"><div class="tag">All phases</div><div class="timeline">${tl}</div>
+    ${p>0&&!ui.confirm?`<button class="linkbtn" data-act="down" style="margin-top:8px">Go back a phase</button>`:""}
+    <details><summary>Common mistakes</summary><ul class="mist">${MISTAKES.map(([a,b])=>`<li><b>${esc(a)}.</b> ${esc(b)}</li>`).join("")}</ul></details>
+    <details><summary>Backup and restore</summary><p class="m" style="margin:8px 0">Your ticks live on this phone only. Copy a backup now and then and keep it in Notes.</p>
+      <button class="btn ghost" data-act="backup">Copy backup</button>
+      <textarea id="restore" placeholder="Paste a backup here to restore it" style="margin-top:8px"></textarea>
+      <button class="btn ghost" data-act="restore" style="margin-top:8px">Restore from pasted backup</button>
+      <div class="m" id="bkmsg" style="margin-top:6px"></div></details>
+    <details><summary>Weekly template</summary><ul class="mist"><li><b>Mon</b> Training A</li><li><b>Tue</b> Fix: pelvis &amp; core</li><li><b>Wed</b> Training B</li><li><b>Thu</b> Fix: shoulders &amp; scapula</li><li><b>Fri</b> Training A (Phases 0–2) or C (Phases 3–4)</li><li><b>Sat</b> Golf or a walk${p===0?" + shoulder circuit":""}</li><li><b>Sun</b> Rest + yoga flow${p===0?" + shoulder circuit":""}</li><li>Daily block every day; on training days it's your warm-up.</li></ul></details>
+  </div>`;
+}
+
+/* ---------------- render + events ---------------- */
+const app=document.getElementById("app");
+function render(){
+  const focusNote = document.activeElement && document.activeElement.id==="note";
+  let html;
+  try{ html = ui.tab==="today"?viewToday():ui.tab==="stats"?viewStats():viewPhase(); }
+  catch(e){ lastError = "Display error: "+(e&&e.message||e); ui.open=null; ui.tab="today"; try{ html=viewToday(); }catch(_){ html=""; } }
+  if(lastError) html = `<div class="banner warn">Something went wrong: ${esc(lastError)}. Screenshot this and send it to Claude.</div>` + html;
+  if(storageNote && !(ui.tab==="today" && !ui.open)) html = `<div class="banner">${esc(storageNote)}</div>` + html;
+  app.innerHTML = html;
+  document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-current", b.dataset.tab===ui.tab?"page":"false"));
+  if(focusNote){ const n=document.getElementById("note"); if(n){ n.focus(); n.selectionStart=n.selectionEnd=n.value.length; } }
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  const d=b.dataset;
+  if(d.tab){ ui.tab=d.tab; ui.open=null; ui.confirm=null; ui.swap=false; if(d.tab==="today" && b.closest("nav")) ui.date=todayKey(); render(); scrollTo(0,0); return; }
+  if(d.date){ ui.tab="today"; ui.date=d.date; ui.open=null; ui.swap=false; render(); scrollTo(0,0); return; }
+  if(d.open){ ui.open=d.open; render(); scrollTo(0,0); return; }
+  if(d.tick!==undefined){ toggle(ui.date,ui.open,Number(d.tick)); return; }
+  if(d.slot){ setSlot(ui.date,d.slot); scrollTo(0,0); return; }
+  if(d.marker!==undefined){ const p=curPhase(); const m=state.settings.markers[p]||(state.settings.markers[p]={}); if(m[d.marker]) delete m[d.marker]; else m[d.marker]=true; persistSettings(); render(); return; }
+  switch(d.act){
+    case "prev": ui.date=addDays(ui.date,-1); ui.swap=false; break;
+    case "next": ui.date=addDays(ui.date,1); ui.swap=false; break;
+    case "gotoday": ui.date=todayKey(); break;
+    case "close": ui.open=null; break;
+    case "swap": ui.swap=true; break;
+    case "swapcancel": ui.swap=false; break;
+    case "up": ui.confirm="up"; break;
+    case "down": ui.confirm="down"; break;
+    case "nocf": ui.confirm=null; break;
+    case "backup": { const txt=exportData(); const msg=document.getElementById("bkmsg");
+      (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>{msg.textContent="Backup copied. Paste it into Notes.";},()=>{const r=document.getElementById("restore"); r.value=txt; r.select(); msg.textContent="Select-all and copy the text above.";}); return; }
+    case "restore": { const msg=document.getElementById("bkmsg"); try{ importData(document.getElementById("restore").value); render(); }catch(e){ msg.textContent="That doesn't look like a tracker backup."; } return; }
+    case "cues": ui.cues=!ui.cues; break;
+    case "doup": case "dodown": {
+      const p=curPhase()+(d.act==="doup"?1:-1), t=todayKey();
+      const h=state.settings.history.filter(x=>x.from<t); h.push({p,from:t}); state.settings.history=h;
+      ui.confirm=null; persistSettings(); break; }
+    default: return;
+  }
+  render();
+});
+document.addEventListener("input",e=>{ if(e.target.dataset && e.target.dataset.note) setNote(ui.date,ui.open,e.target.value); });
+// roll over to the new day if the app is left open past midnight
+let lastDay=todayKey();
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden && todayKey()!==lastDay){ if(ui.date===lastDay) ui.date=todayKey(); lastDay=todayKey(); render(); } });
+
+window.addEventListener("error",e=>{ lastError=(e.message||"error")+(e.lineno?" (line "+e.lineno+")":""); try{render();}catch(_){} });
+window.addEventListener("unhandledrejection",e=>{ const r=e.reason; lastError="Unhandled: "+((r&&(r.code||r.message))||String(r)); try{render();}catch(_){} });
+(async function start(){
+  initStorage();
+  render();
+})();
+</script>
+
+</body></html>

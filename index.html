@@ -73,6 +73,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px soli
 .back{color:var(--mute);font-size:14px;padding:4px 0}
 .ex{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start;text-align:left;width:100%}
 .ex:last-child{border-bottom:0}
+label.ex{cursor:pointer;position:relative;-webkit-user-select:none;user-select:none}
+.cb{position:absolute;opacity:0;width:28px;height:28px;margin:0;left:0;top:12px}
+.cb:focus-visible + .box{outline:2px solid var(--acc);outline-offset:2px}
 .box{width:28px;height:28px;border-radius:9px;border:2px solid var(--mute);flex:none;display:grid;place-items:center;font-size:16px;color:var(--acc-ink);margin-top:1px}
 .ex.done .box{background:var(--acc);border-color:var(--acc)}
 .ex.done .t{color:var(--mute);text-decoration:line-through}
@@ -282,10 +285,10 @@ function toggle(k,sk,i){
   if(!updateTickDom(k,sk,i)) render();
 }
 function updateTickDom(k,sk,i){
-  const btn=app.querySelector(`[data-tick="${i}"]`), head=document.getElementById("sesshead"), bar=document.getElementById("sessbar");
+  const btn=app.querySelector(`[data-row="${i}"]`), head=document.getElementById("sesshead"), bar=document.getElementById("sessbar");
   if(!btn||!head||!bar) return false;
   const v=sessData(k,sk).t[i];
-  btn.classList.toggle("done",!!v); btn.setAttribute("aria-pressed",String(!!v));
+  btn.classList.toggle("done",!!v); const cb=btn.querySelector("input"); if(cb) cb.checked=!!v;
   btn.querySelector(".box").textContent = v?"✓":"";
   const tm=btn.querySelector(".time"); tm.textContent = v?"✓ "+v:""; tm.hidden=!v;
   const {done,total}=progress(k,sk);
@@ -392,9 +395,9 @@ function viewToday(){
 function viewSession(k,sk){
   const p=phaseAt(k), items=itemsFor(sk,p), sd=sessData(k,sk), t=sd.t||{};
   const {done,total}=progress(k,sk); const locked = k>todayKey();
-  const list = items.map((it,i)=>`<button class="ex ${t[i]?"done":""}" data-tick="${i}" ${locked?"disabled":""} aria-pressed="${!!t[i]}">
+  const list = items.map((it,i)=>`<label class="ex ${t[i]?"done":""}" data-row="${i}" for="cb${i}"><input type="checkbox" class="cb" id="cb${i}" data-tick="${i}" ${t[i]?"checked":""} ${locked?"disabled":""}>
     <span class="box">${t[i]?"✓":""}</span>
-    <span style="min-width:0"><span class="t" style="display:block">${esc(it.n)}</span><span class="m" style="display:block">${esc(it.d||"")}</span>${it.c&&ui.cues?`<span class="cue" style="display:block">${esc(it.c)}</span>`:""}<span class="time" style="display:block" ${t[i]?"":"hidden"}>${t[i]?"✓ "+esc(t[i]):""}</span></span></button>`).join("");
+    <span style="min-width:0"><span class="t" style="display:block">${esc(it.n)}</span><span class="m" style="display:block">${esc(it.d||"")}</span>${it.c&&ui.cues?`<span class="cue" style="display:block">${esc(it.c)}</span>`:""}<span class="time" style="display:block" ${t[i]?"":"hidden"}>${t[i]?"✓ "+esc(t[i]):""}</span></span></label>`).join("");
   const extra = sk==="daily" ? `<div class="card"><div class="tag optlabel">Optional (not counted)</div>${DAILY_OPT.map(split).map(it=>`<div class="ex"><span style="min-width:0"><span class="t" style="display:block">${esc(it.n)}</span><span class="m" style="display:block">${esc(it.d)}</span><span class="cue" style="display:block">${esc(it.c)}</span></span></div>`).join("")}</div>` : "";
   return `
   <button class="back" data-act="close">‹ ${k===todayKey()?"Today":fmtLong(k)}</button>
@@ -482,6 +485,7 @@ function render(){
   catch(e){ lastError = "Display error: "+(e&&e.message||e); ui.open=null; ui.tab="today"; try{ html=viewToday(); }catch(_){ html=""; } }
   if(lastError) html = `<div class="banner warn">Something went wrong: ${esc(lastError)}. Screenshot this and send it to Claude.</div>` + html;
   if(storageNote && !(ui.tab==="today" && !ui.open)) html = `<div class="banner">${esc(storageNote)}</div>` + html;
+  html += `<div class="m" style="text-align:center;font-size:11px;margin-top:8px">Version 3 · native tick boxes</div>`;
   app.innerHTML = html;
   document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-current", b.dataset.tab===ui.tab?"page":"false"));
   if(focusNote){ const n=document.getElementById("note"); if(n){ n.focus(); n.selectionStart=n.selectionEnd=n.value.length; } }
@@ -492,7 +496,6 @@ document.addEventListener("click",e=>{
   if(d.tab){ ui.tab=d.tab; ui.open=null; ui.confirm=null; ui.swap=false; if(d.tab==="today" && b.closest("nav")) ui.date=todayKey(); render(); scrollTo(0,0); return; }
   if(d.date){ ui.tab="today"; ui.date=d.date; ui.open=null; ui.swap=false; render(); scrollTo(0,0); return; }
   if(d.open){ ui.open=d.open; render(); scrollTo(0,0); return; }
-  if(d.tick!==undefined){ toggle(ui.date,ui.open,Number(d.tick)); return; }
   if(d.slot){ setSlot(ui.date,d.slot); scrollTo(0,0); return; }
   if(d.marker!==undefined){ const p=curPhase(); const m=state.settings.markers[p]||(state.settings.markers[p]={}); if(m[d.marker]) delete m[d.marker]; else m[d.marker]=true; persistSettings(); render(); return; }
   switch(d.act){
@@ -517,6 +520,7 @@ document.addEventListener("click",e=>{
   }
   render();
 });
+document.addEventListener("change",e=>{ const el=e.target; if(el && el.classList && el.classList.contains("cb")){ const i=Number(el.dataset.tick); const on=!!sessData(ui.date,ui.open).t[i]; if(on!==el.checked) toggle(ui.date,ui.open,i); } });
 document.addEventListener("input",e=>{ if(e.target.dataset && e.target.dataset.note) setNote(ui.date,ui.open,e.target.value); });
 // roll over to the new day if the app is left open past midnight
 let lastDay=todayKey();

@@ -343,7 +343,7 @@ function ring(done,total){
 }
 function phaseProgress(){
   const p=curPhase(), start=phaseStart(), t=todayKey();
-  const week = Math.floor(daysBetween(mondayOf(start),mondayOf(t))/7)+1;
+  const week = Math.floor(Math.max(0,daysBetween(start,t))/7)+1;
   const total = PHASES[p].weeks;
   const dayNum = daysBetween(start,t)+1;
   const pct = Math.min(100,Math.round(dayNum/(total*7)*100));
@@ -485,7 +485,7 @@ function render(){
   catch(e){ lastError = "Display error: "+(e&&e.message||e); ui.open=null; ui.tab="today"; try{ html=viewToday(); }catch(_){ html=""; } }
   if(lastError) html = `<div class="banner warn">Something went wrong: ${esc(lastError)}. Screenshot this and send it to Claude.</div>` + html;
   if(storageNote && !(ui.tab==="today" && !ui.open)) html = `<div class="banner">${esc(storageNote)}</div>` + html;
-  html += `<div class="m" style="text-align:center;font-size:11px;margin-top:8px">Version 3 · native tick boxes</div>`;
+  html += `<div class="m" style="text-align:center;font-size:11px;margin-top:8px">Version 4</div>`;
   app.innerHTML = html;
   document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-current", b.dataset.tab===ui.tab?"page":"false"));
   if(focusNote){ const n=document.getElementById("note"); if(n){ n.focus(); n.selectionStart=n.selectionEnd=n.value.length; } }
